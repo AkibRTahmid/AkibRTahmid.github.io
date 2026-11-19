@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MD. AKIB RUBAYIET TAHMID | Agronomic Research & Academic Profile</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root {
+      --primary-green: #2F5D3A;
+      --deep-forest: #1d3b24;
+      --warm-cream: #F6F1E7;
+      --golden-wheat: #D9A441;
+      --soil-brown: #6B4A2F;
+      --text-dark: #1f2923;
+      --text-muted: #526056;
+      --card-bg: #ffffff;
+      --border-soft: #e2dbce;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--warm-cream);
+      color: var(--text-dark);
+      line-height: 1.7;
+      font-size: 15.5px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .serif-font {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    section {
+      scroll-margin-top: 85px;
+    }
+
+    nav.top-nav {
+      position: sticky;
+      top: 0;
+      background-color: rgba(246, 241, 231, 0.98);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-soft);
+      padding: 12px 24px;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav.top-nav .nav-brand {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary-green);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-menu-wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    nav.top-nav ul.nav-links {
+      display: flex;
+      list-style: none;
+      gap: 18px;
+    }
+
+    nav.top-nav a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+      cursor: pointer;
+    }
+
+    nav.top-nav a:hover {
+      color: var(--golden-wheat);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--border-soft);
+      border-radius: 4px;
+      padding: 6px 10px;
+      font-size: 18px;
+      cursor: pointer;
+      color: var(--primary-green);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 460px;
+      height: 55vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(rgba(29, 59, 36, 0.60), rgba(29, 59, 36, 0.72)), 
+                  url('https://drive.google.com/thumbnail?id=1_dkSgprecnk393xnJUIYrwR0qTpCcWMH&sz=w1920') center/cover no-repeat;
+      color: #ffffff;
+    }
+
+    .hero-content {
+      max-width: 840px;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    .hero-pretitle {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--golden-wheat);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 4.5vw, 44px);
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+      line-height: 1.25;
+    }
+
+    .hero-tagline {
+      font-size: clamp(15px, 2vw, 17.5px);
+      font-weight: 400;
+      color: #f7faf8;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      background-color: var(--golden-wheat);
+      color: #1a1a1a;
+      padding: 10px 22px;
+      font-size: 13.5px;
+      font-weight: 600;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.25s;
+      display: inline-block;
+    }
+
+    .btn-gold:hover {
+      background-color: #c49132;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid #ffffff;
+      color: #ffffff;
+      padding: 10px 20px;
+      font-size: 13.5px;
+      font-weight: 500;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.25s;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateY(-2px);
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 55px 24px;
+    }
+
+    .section-title {
+      font-size: 27px;
+      color: var(--primary-green);
+      margin-bottom: 6px;
+      line-height: 1.4;
+      padding-top: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .about-avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #ffffff;
+      box-shadow: 0 8px 20px rgba(47, 93, 58, 0.12);
+    }
+
+    .about-text p {
+      font-size: 15px;
+      color: #2b362e;
+      margin-bottom: 14px;
+      line-height: 1.75;
+      text-align: left;
+    }
+
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0 20px 0;
+    }
+
+    .skill-badge {
+      background: #f0ebe1;
+      border: 1px solid var(--border-soft);
+      padding: 5px 12px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary-green);
+    }
+
+    .supervisor-card {
+      background: var(--card-bg);
+      border-left: 4px solid var(--primary-green);
+      padding: 18px 20px;
+      border-radius: 0 6px 6px 0;
+      margin-top: 15px;
+      border-top: 1px solid var(--border-soft);
+      border-right: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .supervisor-card h5 {
+      font-size: 15px;
+      color: var(--primary-green);
+      margin-bottom: 4px;
+    }
+
+    .supervisor-card p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin: 0;
+      text-align: left;
+    }
+
+    .abstract-toggle-btn {
+      background: none;
+      border: none;
+      color: var(--soil-brown);
+      font-weight: 600;
+      font-size: 12.5px;
+      cursor: pointer;
+      padding: 6px 0 0;
+      display: inline-block;
+    }
+
+    .abstract-toggle-btn:hover {
+      text-decoration: underline;
+    }
+
+    .abstract-content {
+      display: none;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border-soft);
+      font-size: 13px;
+      color: #4b554e;
+      line-height: 1.65;
+    }
+
+    /* 3 Distinct Research Focus Cards */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .research-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border-soft);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+
+    .research-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(47, 93, 58, 0.08);
+    }
+
+    .research-card img {
+      width: 100%;
+      height: 195px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border-soft);
+      display: block;
+      background-color: #f1ede4;
+    }
+
+    .research-card-content {
+      padding: 18px 16px;
+      flex: 1;
+    }
+
+    .research-card-content h4 {
+      font-size: 16.5px;
+      color: var(--primary-green);
+      margin-bottom: 8px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .research-card-content p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    /* Results Chart */
+    .results-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      padding: 24px;
+      margin: 30px 0;
+    }
+
+    .chart-container {
+      position: relative;
+      height: 320px;
+      width: 100%;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .gallery-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 0.25s;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .gallery-img-box {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background-color: #f1ede4;
+    }
+
+    .gallery-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+      display: block;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-text {
+      padding: 12px 14px;
+      font-size: 13px;
+      color: var(--text-dark);
+      font-weight: 500;
+      background: #ffffff;
+      border-top: 1px solid var(--border-soft);
+      line-height: 1.45;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      margin: 25px 0;
+      padding-left: 28px;
+      border-left: 2px solid var(--golden-wheat);
+    }
+
+    .timeline-step {
+      position: relative;
+      margin-bottom: 26px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .timeline-step:last-child { margin-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -35px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--golden-wheat);
+      border: 3px solid #ffffff;
+    }
+
+    .timeline-thumb {
+      width: 82px;
+      height: 82px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1.5px solid var(--border-soft);
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      cursor: pointer;
+      background-color: #f1ede4;
+    }
+
+    .timeline-content {
+      flex: 1;
+    }
+
+    .timeline-season {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--soil-brown);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .timeline-content h4 {
+      font-size: 16px;
+      color: var(--primary-green);
+      margin-bottom: 4px;
+    }
+
+    .timeline-content p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Impact Stats */
+    .impact-section {
+      background: var(--primary-green);
+      color: #ffffff;
+      padding: 38px 20px;
+      border-radius: 8px;
+      text-align: center;
+      margin: 35px 0;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .impact-item h3 {
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--golden-wheat);
+      margin-bottom: 3px;
+    }
+
+    .impact-item p {
+      font-size: 13px;
+      color: #e4ebe6;
+    }
+
+    /* Academic Cards */
+    .academic-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      padding: 22px;
+      margin-bottom: 25px;
+      overflow-x: auto;
+    }
+
+    .score-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 520px;
+    }
+
+    .score-table th, .score-table td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-soft);
+      font-size: 14px;
+    }
+
+    .score-table th {
+      background: #fbf9f4;
+      color: var(--primary-green);
+      font-weight: 600;
+    }
+
+    .cert-link {
+      color: var(--primary-green);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px dotted var(--primary-green);
+    }
+
+    .cert-link:hover {
+      color: var(--golden-wheat);
+    }
+
+    /* Leadership Layout */
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .leadership-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--card-bg);
+      padding: 12px 16px;
+      border-radius: 6px;
+      border: 1px solid var(--border-soft);
+    }
+
+    .lead-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: contain;
+      border: 1px solid var(--border-soft);
+      background: #ffffff;
+      padding: 2px;
+      flex-shrink: 0;
+    }
+
+    .lead-info h4 {
+      font-size: 14px;
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    .lead-info .lead-role {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--primary-green);
+    }
+
+    .lead-info .lead-date {
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    .more-leadership {
+      display: none;
+    }
+
+    .toggle-lead-btn {
+      margin-top: 16px;
+      background: none;
+      border: 1px solid var(--primary-green);
+      color: var(--primary-green);
+      padding: 8px 18px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .toggle-lead-btn:hover {
+      background: var(--primary-green);
+      color: #ffffff;
+    }
+
+    /* Map Box */
+    #field-map {
+      height: 380px;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      margin-top: 15px;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 18, 0.92);
+      backdrop-filter: blur(5px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .lightbox-content {
+      max-width: 900px;
+      max-height: 85vh;
+      text-align: center;
+      position: relative;
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 75vh;
+      border-radius: 6px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+
+    .lightbox-caption {
+      color: #f7faf8;
+      font-size: 14px;
+      margin-top: 12px;
+      font-weight: 500;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -35px;
+      right: 0;
+      color: #ffffff;
+      font-size: 28px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* Quick Copy Toast */
+    .toast {
+      visibility: hidden;
+      min-width: 240px;
+      background-color: var(--deep-forest);
+      color: #ffffff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 12px 16px;
+      position: fixed;
+      z-index: 3000;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 13.5px;
+      border: 1px solid var(--golden-wheat);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+
+    .toast.show {
+      visibility: visible;
+      animation: fadeToast 2.5s forwards;
+    }
+
+    @keyframes fadeToast {
+      0% { opacity: 0; bottom: 20px; }
+      15% { opacity: 1; bottom: 30px; }
+      85% { opacity: 1; bottom: 30px; }
+      100% { opacity: 0; bottom: 20px; }
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: var(--primary-green);
+      color: #ffffff;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      border: 1.5px solid var(--golden-wheat);
+      z-index: 999;
+      font-size: 18px;
+      opacity: 0;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+    }
+
+    footer {
+      background: var(--deep-forest);
+      color: #f6f1e7;
+      padding: 50px 20px 30px;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 18px 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a, .footer-links button {
+      color: var(--golden-wheat);
+      text-decoration: none;
+      font-size: 13.5px;
+      border-bottom: 1px dotted var(--golden-wheat);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .ref-note {
+      font-size: 13.5px;
+      color: #d1ded6;
+      margin-top: 12px;
+      font-style: italic;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; text-align: center; }
+      .about-avatar { margin: 0 auto; }
+      .hero { height: auto; min-height: 400px; padding: 60px 16px; }
+      .research-grid, .gallery-grid, .leadership-grid { grid-template-columns: 1fr; }
+      .impact-grid { grid-template-columns: repeat(2, 1fr); }
+      
+      .mobile-menu-btn { display: block; }
+      nav.top-nav ul.nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fbf8f2;
+        flex-direction: column;
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--border-soft);
+        gap: 12px;
+      }
+      nav.top-nav ul.nav-links.active {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <a href="#" class="nav-brand serif-font">MD. AKIB RUBAYIET TAHMID</a>
+    <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle Navigation">☰</button>
+    <div class="nav-menu-wrapper">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" onclick="closeMenu()">About</a></li>
+        <li><a href="#research" onclick="closeMenu()">Research</a></li>
+        <li><a href="#results" onclick="closeMenu()">Results</a></li>
+        <li><a href="#fieldwork" onclick="closeMenu()">Fieldwork</a></li>
+        <li><a href="#credentials" onclick="closeMenu()">Credentials</a></li>
+        <li><a href="#leadership" onclick="closeMenu()">Leadership</a></li>
+        <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-pretitle">Agronomic Field Research • Wheat Stress Physiology</div>
+      <h1>MD. AKIB RUBAYIET TAHMID</h1>
+      <p class="hero-tagline">
+        B.Sc. (Hons) Candidate in Agriculture • Actively seeking MS / Graduate Research Assistantship opportunities (Expected Graduation: March 2027)
+      </p>
+      <div class="hero-buttons">
+        <a href="https://drive.google.com/open?id=1MXVELChBu2d02aOgDceQfdStmS7F8fSA" target="_blank" rel="noopener noreferrer" class="btn-gold">
+          Download Curriculum Vitae (PDF)
+        </a>
+        <a href="#results" class="btn-outline">View Experimental Findings</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- About Section -->
+    <section id="about" style="margin-bottom: 55px;">
+      <div class="about-grid">
+        <div style="text-align:center;">
+          <img src="https://lh3.googleusercontent.com/a/ACg8ocLD_n1TfP1atbapgeCzOzqnqlWc-tvGIJkvND6DmyNnfkFWx3H2=s432-c-no" 
+               alt="Akib Rubayiet Tahmid" class="about-avatar">
+          <div style="margin-top: 10px;">
+            <span style="font-size: 12.5px; color: var(--soil-brown); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">
+              Agronomist & Researcher
+            </span>
+          </div>
+        </div>
+        <div class="about-text">
+          <h2 class="section-title">Academic Profile</h2>
+          <p>
+            I am a final-year undergraduate researcher in the Department of Agriculture at Noakhali Science and Technology University (NSTU), graduating in March 2027. My work investigates wheat (<em>Triticum aestivum</em>) adaptation, canopy dynamics, and physiological responses under soil salinity stress in coastal Bangladesh.
+          </p>
+          <p>
+            With formal training in randomized block field designs (RCBD), quantitative statistical modeling, and GIS mapping, I am actively seeking MS / Graduate Research Assistant positions in crop stress physiology, sustainable cereal production, and climate-resilient farming systems.
+          </p>
+
+          <div class="skills-row">
+            <span class="skill-badge">R (Data Analysis)</span>
+            <span class="skill-badge">IBM SPSS Statistics</span>
+            <span class="skill-badge">Field Experimental Design (RCBD)</span>
+            <span class="skill-badge">Canopy Phenotyping</span>
+            <span class="skill-badge">QGIS (Spatial Agronomy)</span>
+          </div>
+
+          <div class="supervisor-card">
+            <h5>Research Thesis Project</h5>
+            <p>
+              <strong>"Evaluation of Morpho-Physiological Traits and Yield Stability in Wheat (<em>Triticum aestivum</em>) Under Variable Coastal Salinity Gradients."</strong>
+            </p>
+            <p style="margin-top: 4px;">
+              <strong>Supervisor:</strong> <a href="https://nstu.edu.bd/departments/AGRI/teacher/profile/70" target="_blank" rel="noopener noreferrer" style="color: var(--primary-green); font-weight: 600; text-decoration: none; border-bottom: 1px dotted var(--primary-green);">Dr. Kawsar Hossain</a>, Assistant Professor, Department of Agriculture, NSTU.
+            </p>
+            <button class="abstract-toggle-btn" onclick="toggleAbstract()">+ Read Research Abstract</button>
+            <div class="abstract-content" id="thesisAbstract">
+              Soil salinity in coastal Bangladesh poses severe challenges to rabi cereal production. This field investigation utilizes a Randomized Complete Block Design (RCBD) across multiple salinity regimes (0, 4, 8, 12 dS/m) to quantify vegetative endurance, tiller survival, flag leaf photosynthesis duration, and harvest index in <em>Triticum aestivum</em> genotypes. The objective is to identify physiological indicators associated with sustained grain filling and osmotic tolerance.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 Distinct Research Focus Cards -->
+    <section id="research" style="margin-bottom: 55px;">
+      <h2 class="section-title">Wheat Research Focus</h2>
+      <p class="section-subtitle">Core experimental components evaluating <em>Triticum aestivum</em> under saline field gradients.</p>
+
+      <div class="research-grid">
+        <!-- Card 1: Replicated Plot Bed Architecture -->
+        <div class="research-card" onclick="openLightbox('https://drive.google.com/thumbnail?id=1m2NUWc3aAVIu50B-q_MrIt4FDIPG_K4I&sz=w1600', 'Plot Architecture & RCBD Layout')">
+          <img src="https://drive.google.com/thumbnail?id=1m2NUWc3aAVIu50B-q_MrIt4FDIPG_K4I&sz=w800" 
+               onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1m2NUWc3aAVIu50B-q_MrIt4FDIPG_K4I=s800';" 
+               alt="Plot Bed Layout">
+          <div class="research-card-content">
+            <h4>Plot Architecture & RCBD Setup</h4>
+            <p>Randomized Complete Block Design (RCBD) field layouts to evaluate emergence uniformity and seedling survival under controlled saline regimes.</p>
+          </div>
+        </div>
+
+        <!-- Card 2: Salinity Irrigation & Water Channel -->
+        <div class="research-card" onclick="openLightbox('https://drive.google.com/thumbnail?id=154NBTHnih9a5YwRCdDInK6FOEF1ll1qs&sz=w1600', 'Salinity Irrigation Regimes')">
+          <img src="https://drive.google.com/thumbnail?id=154NBTHnih9a5YwRCdDInK6FOEF1ll1qs&sz=w800" 
+               onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/154NBTHnih9a5YwRCdDInK6FOEF1ll1qs=s800';" 
+               alt="Salinity Irrigation Trials">
+          <div class="research-card-content">
+            <h4>Salinity Irrigation & In-Field Trials</h4>
+            <p>Executing scheduled irrigation treatments, monitoring electrical conductivity (EC), and tracking vegetative vigor during stress exposure.</p>
+          </div>
+        </div>
+
+        <!-- Card 3: Green Wheat Rows & Canopy Formation -->
+        <div class="research-card" onclick="openLightbox('https://drive.google.com/thumbnail?id=1ifgRqEWU7YLQwZ9tcpYOfQh-paoPFf_q&sz=w1600', 'Canopy & Morphological Screening')">
+          <img src="https://drive.google.com/thumbnail?id=1ifgRqEWU7YLQwZ9tcpYOfQh-paoPFf_q&sz=w800" 
+               onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1ifgRqEWU7YLQwZ9tcpYOfQh-paoPFf_q=s800';" 
+               alt="Canopy Growth">
+          <div class="research-card-content">
+            <h4>Canopy & Morphological Traits</h4>
+            <p>Systematic measurement of plant height, flag leaf dimensions, productive tillers per hill, and green canopy persistence across treatment blocks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section with Interactive Chart -->
+    <section id="results" style="margin-bottom: 55px;">
+      <h2 class="section-title">Experimental Results & Trait Data</h2>
+      <p class="section-subtitle">Preliminary findings illustrating wheat yield response and 1000-grain weight across increasing soil salinity (EC) levels.</p>
+
+      <div class="results-card">
+        <div class="chart-container">
+          <canvas id="salinityChart"></canvas>
+        </div>
+        <p style="font-size: 13px; color: var(--text-muted); margin-top: 14px; text-align: center; font-style: italic;">
+          Figure 1: Mean grain yield (t/ha) and 1000-grain weight (g) of experimental wheat lines plotted against soil salinity treatments (dS/m).
+        </p>
+      </div>
+    </section>
+
+    <!-- Fieldwork Gallery -->
+    <section id="fieldwork" style="margin-bottom: 55px;">
+      <h2 class="section-title">Wheat Field Trial Documentation</h2>
+      <p class="section-subtitle">Click on any photo to inspect high-resolution plot views and agronomic parameters.</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-card" onclick="openLightbox('https://drive.google.com/thumbnail?id=1sFRLdw-hHURAqV31viLwVlaQEvibvpmm&sz=w1600', 'Diurnal Scouting & Field Microclimate Observation')">
+          <div class="gallery-img-box">
+            <img src="https://drive.google.com/thumbnail?id=1sFRLdw-hHURAqV31viLwVlaQEvibvpmm&sz=w800" 
+                 onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1sFRLdw-hHURAqV31viLwVlaQEvibvpmm=s800';" 
+                 alt="Diurnal Scouting">
+          </div>
+          <div class="gallery-text">Diurnal Scouting & Field Microclimate Observation</div>
+        </div>
+
+        <div class="gallery-card" onclick="openLightbox('https://drive.google.com/thumbnail?id=1-yXwKmvoatyLE9zmAmNKsjkUelTYURvf&sz=w1600', 'Young Green Wheat Seedlings in Trial Rows')">
+          <div class="gallery-img-box">
+            <img src="https://drive.google.com/thumbnail?id=1-yXwKmvoatyLE9zmAmNKsjkUelTYURvf&sz=w800" 
+                 onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1-yXwKmvoatyLE9zmAmNKsjkUelTYURvf=s800';" 
+                 alt="Green Seedling Rows">
+          </div>
+          <div class="gallery-text">Seedling Emergence & Vegetative Stand Uniformity</div>
+        </div>
+
+        <div class="gallery-card" onclick="openLightbox('https://drive.google.com/thumbnail?id=1qjsy-6EGkcTorVPTVujo4LToYbz0F8s5&sz=w1600', 'Canopy Formation & Field Horizon Monitoring')">
+          <div class="gallery-img-box">
+            <img src="https://drive.google.com/thumbnail?id=1qjsy-6EGkcTorVPTVujo4LToYbz0F8s5&sz=w800" 
+                 onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1qjsy-6EGkcTorVPTVujo4LToYbz0F8s5=s800';" 
+                 alt="Canopy Field">
+          </div>
+          <div class="gallery-text">Canopy Formation & Field Horizon Monitoring</div>
+        </div>
+
+        <div class="gallery-card" onclick="openLightbox('https://drive.google.com/thumbnail?id=1zucl0XDv3gT0Xz3cXYmrQMEoQlr5w6vu&sz=w1600', 'Furrow Inspection & Root Zone Monitoring')">
+          <div class="gallery-img-box">
+            <img src="https://drive.google.com/thumbnail?id=1zucl0XDv3gT0Xz3cXYmrQMEoQlr5w6vu&sz=w800" 
+                 onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1zucl0XDv3gT0Xz3cXYmrQMEoQlr5w6vu=s800';" 
+                 alt="Seedlings in Furrows">
+          </div>
+          <div class="gallery-text">Furrow Inspection & Root Zone Monitoring</div>
+        </div>
+
+        <div class="gallery-card" onclick="openLightbox('https://drive.google.com/thumbnail?id=1b0Qo1bDI597uzoqTTTw6mhVY1w-wI5lo&sz=w1600', 'Replicated RCBD Plot Demarcation & Soil Amendments')">
+          <div class="gallery-img-box">
+            <img src="https://drive.google.com/thumbnail?id=1b0Qo1bDI597uzoqTTTw6mhVY1w-wI5lo&sz=w800" 
+                 onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1b0Qo1bDI597uzoqTTTw6mhVY1w-wI5lo=s800';" 
+                 alt="RCBD Plot Layout">
+          </div>
+          <div class="gallery-text">Replicated RCBD Plot Demarcation & Soil Amendments</div>
+        </div>
+
+        <div class="gallery-card" onclick="openLightbox('https://drive.google.com/thumbnail?id=1etFgW6Q_PMQTlytBzkGuJ0oH-8i3MB-b&sz=w1600', 'In-Field Phenotyping & Agronomic Evaluation')">
+          <div class="gallery-img-box">
+            <img src="https://drive.google.com/thumbnail?id=1etFgW6Q_PMQTlytBzkGuJ0oH-8i3MB-b&sz=w800" 
+                 onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1etFgW6Q_PMQTlytBzkGuJ0oH-8i3MB-b=s800';" 
+                 alt="Akib in Field">
+          </div>
+          <div class="gallery-text">In-Field Phenotyping & Agronomic Evaluation</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Phenological Lifecycle Timeline -->
+    <section style="margin-bottom: 55px;">
+      <h2 class="section-title">Wheat Phenological Staging</h2>
+      <p class="section-subtitle">Chronological progression of the experimental crop from seedbed setup to in-field harvest evaluation.</p>
+
+      <div class="timeline">
+        <div class="timeline-step">
+          <div class="timeline-dot"></div>
+          <img src="https://drive.google.com/thumbnail?id=1m2NUWc3aAVIu50B-q_MrIt4FDIPG_K4I&sz=w400" 
+               onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1m2NUWc3aAVIu50B-q_MrIt4FDIPG_K4I=s400';" 
+               alt="Wheat Seedbed Preparation" class="timeline-thumb" onclick="openLightbox(this.src, 'Stage 1: Seedbed Preparation')">
+          <div class="timeline-content">
+            <span class="timeline-season">November • Rabi Sowing</span>
+            <h4>01. Sowing & Seedling Emergence</h4>
+            <p>Seeding in randomized blocks (RCBD); in-field scouting and recording germination velocity and coleoptile emergence under baseline salinity.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-dot"></div>
+          <img src="https://drive.google.com/thumbnail?id=1zucl0XDv3gT0Xz3cXYmrQMEoQlr5w6vu&sz=w400" 
+               onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1zucl0XDv3gT0Xz3cXYmrQMEoQlr5w6vu=s400';" 
+               alt="Emerged Green Wheat Seedlings" class="timeline-thumb" onclick="openLightbox(this.src, 'Stage 2: Tillering Stage')">
+          <div class="timeline-content">
+            <span class="timeline-season">December • Vegetative Vigor</span>
+            <h4>02. Crown Root Initiation & Tillering</h4>
+            <p>Scoring productive tillers, crown root expansion, and primary leaf development across salinity treatment gradients.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-dot"></div>
+          <img src="https://drive.google.com/thumbnail?id=1ifgRqEWU7YLQwZ9tcpYOfQh-paoPFf_q&sz=w400" 
+               onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1ifgRqEWU7YLQwZ9tcpYOfQh-paoPFf_q=s400';" 
+               alt="Green Wheat Rows Canopy" class="timeline-thumb" onclick="openLightbox(this.src, 'Stage 3: Heading & Canopy Growth')">
+          <div class="timeline-content">
+            <span class="timeline-season">January • Canopy Growth</span>
+            <h4>03. Stem Elongation & Anthesis</h4>
+            <p>Tracking boot stage, flag leaf area, spike emergence, and pollen fertility under abiotic stress intervals.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-dot"></div>
+          <img src="https://drive.google.com/thumbnail?id=1etFgW6Q_PMQTlytBzkGuJ0oH-8i3MB-b&sz=w400" 
+               onerror="this.onerror=null; this.src='https://lh3.googleusercontent.com/d/1etFgW6Q_PMQTlytBzkGuJ0oH-8i3MB-b=s400';" 
+               alt="Akib in Field Evaluation" class="timeline-thumb" onclick="openLightbox(this.src, 'Stage 4: Harvest & Physiological Maturity')">
+          <div class="timeline-content">
+            <span class="timeline-season">February – March • Harvest Evaluation</span>
+            <h4>04. Grain Filling & Physiological Maturity</h4>
+            <p>Harvesting, grain yield determination, 1000-grain weight analysis, and statistical variance modeling in R and SPSS.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research Impact Numbers -->
+    <section class="impact-section">
+      <div class="impact-grid">
+        <div class="impact-item">
+          <h3>1,200+</h3>
+          <p>Replicated Plots & Rows</p>
+        </div>
+        <div class="impact-item">
+          <h3>15+</h3>
+          <p>Physiological Traits Scored</p>
+        </div>
+        <div class="impact-item">
+          <h3>4</h3>
+          <p>Salinity Regimes Tested</p>
+        </div>
+        <div class="impact-item">
+          <h3>1</h3>
+          <p>Coastal Trial Station</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Field Map -->
+    <section id="map-section" style="margin-bottom: 55px;">
+      <h2 class="section-title">Research Trial Station</h2>
+      <p class="section-subtitle">Use the map controls (top-right) to toggle between Satellite Imagery and Street map.</p>
+      
+      <div id="field-map"></div>
+      <div style="font-size: 13px; color: var(--text-muted); margin-top: 8px; font-style: italic;">
+        📍 NSTU Agronomic Research Field, Department of Agriculture (22.7932° N, 91.1005° E).
+      </div>
+    </section>
+
+    <!-- Curated Academic Credentials & Certificates -->
+    <section id="credentials" style="margin-bottom: 55px;">
+      <h2 class="section-title">Academic Credentials & Certifications</h2>
+      <p class="section-subtitle">Formal degree status and verified technical competencies.</p>
+
+      <div class="academic-card">
+        <table class="score-table">
+          <thead>
+            <tr>
+              <th>Degree / Certificate</th>
+              <th>Institution / Authority</th>
+              <th>Status / Credential ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>B.Sc. (Hons) in Agriculture</strong></td>
+              <td><a href="https://nstu.edu.bd/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-green); text-decoration: none;">Noakhali Science and Technology University</a></td>
+              <td><strong>March 2027 (Expected)</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Higher Secondary Certificate (HSC)</strong></td>
+              <td><a href="https://ssnic.edu.bd/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-green); text-decoration: none;">Shahid Syed Nazrul Islam College, Mymensingh</a></td>
+              <td><a href="https://drive.google.com/open?id=1d2Q7tfL3RsPI7jQMgAuKFPu2Dy86nwGa" target="_blank" rel="noopener noreferrer" class="cert-link">GPA 5.00 / 5.00 (Science)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Data Science Professional Certification</strong></td>
+              <td>UniAthena & Cambridge Int. Qualifications (UK)</td>
+              <td><a href="https://drive.google.com/open?id=1WWybJ9XzJKBBN9dI7jDz4WhZohg_GEcm" target="_blank" rel="noopener noreferrer" class="cert-link">Blockchain ID: 2214-1670-7107</a></td>
+            </tr>
+            <tr>
+              <td><strong>IBM SPSS Statistics Certification</strong></td>
+              <td>Mind Luster Certification Authority</td>
+              <td><a href="https://drive.google.com/open?id=1wonxmq69Iy94KkN6gGAxJsawKQ56tgF7" target="_blank" rel="noopener noreferrer" class="cert-link">Certified ID: f082aa96</a></td>
+            </tr>
+            <tr>
+              <td><strong>R Programming for Data Analytics</strong></td>
+              <td>Mind Luster Certification Authority</td>
+              <td><a href="https://drive.google.com/open?id=17Z6UbE-kUpgEWaq9wp4CTwBeY9yOAvLd" target="_blank" rel="noopener noreferrer" class="cert-link">Certified ID: 5b04632f</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section id="leadership" style="margin-bottom: 55px;">
+      <h2 class="section-title">Leadership & Professional Service</h2>
+      <p class="section-subtitle">Key organizational leadership positions across academic bodies.</p>
+
+      <div class="leadership-grid">
+        <div class="leadership-item">
+          <img src="https://drive.google.com/thumbnail?id=1PvYw_UCYv_r0S42xHEAlhqj3hii-IONe&sz=w150" alt="Agri Club" class="lead-logo">
+          <div class="lead-info">
+            <h4>Agri Club, Dept. of Agriculture, NSTU</h4>
+            <div class="lead-role">President</div>
+            <div class="lead-date">Sep 2026 – Present</div>
+          </div>
+        </div>
+
+        <div class="leadership-item">
+          <img src="https://drive.google.com/thumbnail?id=1dJMDiVFATcx73bfJFoLnCbXuPFOSy3xz&sz=w150" alt="Environmental Club" class="lead-logo">
+          <div class="lead-info">
+            <h4>Environmental Club of Youth Network, NSTU</h4>
+            <div class="lead-role">Joint General Secretary</div>
+            <div class="lead-date">May 2026 – Present</div>
+          </div>
+        </div>
+
+        <div class="leadership-item">
+          <img src="https://drive.google.com/thumbnail?id=1HMtjD4H79bxpUoFyaCDdzgjMYFTKPtVD&sz=w150" alt="Mental Health Society" class="lead-logo">
+          <div class="lead-info">
+            <h4>NSTU Mental Health Society</h4>
+            <div class="lead-role">Organizing Secretary</div>
+            <div class="lead-date">2024 – 2025</div>
+          </div>
+        </div>
+
+        <div class="leadership-item">
+          <img src="https://drive.google.com/thumbnail?id=1YY-DRkraFj05ryGiqKeUrSCeAdP5Bq6m&sz=w150" alt="SSNIC Science Club" class="lead-logo">
+          <div class="lead-info">
+            <h4>SSNIC Science Club</h4>
+            <div class="lead-role">Joint Convener</div>
+            <div class="lead-date">2019 – 2021</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="more-leadership" id="moreLead">
+        <div class="leadership-grid" style="margin-top: 14px;">
+          <div class="leadership-item">
+            <img src="https://drive.google.com/thumbnail?id=1dWd9TNXl35038tHLJ6r24JZnMtHshr4l&sz=w150" alt="GMSA NSTU" class="lead-logo">
+            <div class="lead-info">
+              <h4>Greater Mymensingh Students' Association - NSTU</h4>
+              <div class="lead-role">Office Secretary</div>
+              <div class="lead-date">Dec 2024 – Apr 2026</div>
+            </div>
+          </div>
+
+          <div class="leadership-item">
+            <img src="https://drive.google.com/thumbnail?id=1V7vOfYCy3buB12abOc0D0RKFjDt84Yws&sz=w150" alt="Shobdocutir" class="lead-logo">
+            <div class="lead-info">
+              <h4>Shobdocutir</h4>
+              <div class="lead-role">Editorial & Publication Secretary</div>
+              <div class="lead-date">Sep 2024 – Jun 2025</div>
+            </div>
+          </div>
+
+          <div class="leadership-item">
+            <img src="https://drive.google.com/thumbnail?id=1mfoKE3IfX3RyROKMz5GZaz34v8PcKHPF&sz=w150" alt="NSTU Debating Society" class="lead-logo">
+            <div class="lead-info">
+              <h4>NSTU Debating Society</h4>
+              <div class="lead-role">Trainee Sub-Executive Member</div>
+              <div class="lead-date">Dec 2023 – Sep 2024</div>
+            </div>
+          </div>
+
+          <div class="leadership-item">
+            <img src="https://drive.google.com/thumbnail?id=1oRQHbO1igJxIvSNJpONuRTvua6_B-nK9&sz=w150" alt="Tarunno" class="lead-logo">
+            <div class="lead-info">
+              <h4>Tarunno</h4>
+              <div class="lead-role">General Secretary & Press Secretary</div>
+              <div class="lead-date">2020 – 2021</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <button class="toggle-lead-btn" id="leadToggleBtn" onclick="toggleLeadership()">+ View Additional Roles</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Contact & Footer -->
+  <footer id="contact">
+    <div style="max-width: 720px; margin: 0 auto;">
+      <h3 class="serif-font" style="font-size: 24px; color: var(--golden-wheat); margin-bottom: 8px;">Contact & Academic Profiles</h3>
+      <p style="font-size: 14.5px; color: #d8e2dc;">
+        Department of Agriculture, Noakhali Science and Technology University (NSTU), Sonapur, Noakhali-3814, Bangladesh.
+      </p>
+
+      <div class="footer-links">
+        <button onclick="copyEmail()" title="Click to copy email">✉ akibrubayiettahmid@gmail.com (Copy)</button>
+        <a href="https://www.researchgate.net/profile/Akib-Tahmid?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">ResearchGate</a>
+        <a href="https://www.linkedin.com/in/akib-rubayiet-tahmid" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://nstu.edu.bd/" target="_blank" rel="noopener noreferrer">NSTU Portal</a>
+      </div>
+
+      <p class="ref-note">
+        * Academic references and complete trial datasets are available upon request.
+      </p>
+
+      <p style="font-size: 12.5px; color: #8fa094; margin-top: 20px;">
+        &copy; 2026 MD. AKIB RUBAYIET TAHMID. Wheat Agronomic & Salinity Stress Research.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+      <img id="lightboxImg" class="lightbox-img" src="" alt="Zoomed Trial Photo">
+      <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Email copied to clipboard!</div>
+  <a href="#" class="back-to-top" id="backToTop" title="Back to top">↑</a>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+    function closeMenu() {
+      document.getElementById('navLinks').classList.remove('active');
+    }
+
+    function toggleAbstract() {
+      var abstract = document.getElementById('thesisAbstract');
+      var btn = event.target;
+      if (abstract.style.display === 'block') {
+        abstract.style.display = 'none';
+        btn.innerText = '+ Read Research Abstract';
+      } else {
+        abstract.style.display = 'block';
+        btn.innerText = '− Hide Abstract';
+      }
+    }
+
+    function toggleLeadership() {
+      var more = document.getElementById('moreLead');
+      var btn = document.getElementById('leadToggleBtn');
+      if (more.style.display === 'block') {
+        more.style.display = 'none';
+        btn.innerText = '+ View Additional Roles';
+      } else {
+        more.style.display = 'block';
+        btn.innerText = '− Show Less';
+      }
+    }
+
+    function openLightbox(src, caption) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxCaption').innerText = caption;
+      document.getElementById('lightboxModal').style.display = 'flex';
+    }
+    function closeLightbox() {
+      document.getElementById('lightboxModal').style.display = 'none';
+    }
+
+    function copyEmail() {
+      navigator.clipboard.writeText('akibrubayiettahmid@gmail.com').then(() => {
+        var toast = document.getElementById('toast');
+        toast.className = 'toast show';
+        setTimeout(() => { toast.className = toast.className.replace('show', ''); }, 2500);
+      });
+    }
+
+    window.addEventListener('scroll', function() {
+      var btn = document.getElementById('backToTop');
+      if (window.scrollY > 350) {
+        btn.classList.add('show');
+      } else {
+        btn.classList.remove('show');
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      });
+
+      var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri'
+      });
+
+      var map = L.map('field-map', { 
+        scrollWheelZoom: false,
+        center: [22.7932, 91.1005],
+        zoom: 14,
+        layers: [satellite]
+      });
+
+      var baseMaps = {
+        "Satellite Imagery": satellite,
+        "Street Map": osm
+      };
+
+      L.control.layers(baseMaps).addTo(map);
+
+      var nstuMarker = L.marker([22.7932, 91.1005]).addTo(map);
+      nstuMarker.bindPopup("<b>NSTU Agronomic Research Field</b><br>Wheat (<i>Triticum aestivum</i>) Salinity Stress Trial Site.").openPopup();
+      setTimeout(function() { map.invalidateSize(); }, 600);
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var ctx = document.getElementById('salinityChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Control (0 dS/m)', 'Low (4 dS/m)', 'Moderate (8 dS/m)', 'High (12 dS/m)'],
+          datasets: [
+            {
+              label: 'Grain Yield (t/ha)',
+              data: [4.42, 3.86, 2.94, 1.82],
+              backgroundColor: '#2F5D3A',
+              yAxisID: 'y'
+            },
+            {
+              type: 'line',
+              label: '1000-Grain Weight (g)',
+              data: [44.8, 41.2, 35.6, 28.4],
+              borderColor: '#D9A441',
+              backgroundColor: '#D9A441',
+              borderWidth: 2.5,
+              tension: 0.3,
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              type: 'linear',
+              position: 'left',
+              title: { display: true, text: 'Yield (t/ha)', color: '#2F5D3A', font: { weight: 'bold' } },
+              min: 0,
+              max: 6
+            },
+            y1: {
+              type: 'linear',
+              position: 'right',
+              grid: { drawOnChartArea: false },
+              title: { display: true, text: '1000-Grain Weight (g)', color: '#D9A441', font: { weight: 'bold' } },
+              min: 15,
+              max: 55
+            }
+          },
+          plugins: {
+            legend: { position: 'top' },
+            tooltip: { mode: 'index', intersect: false }
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
